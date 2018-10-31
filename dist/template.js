@@ -1,0 +1,3 @@
+;(function (templates, undefined) {
+  templates["util.map.content.html"] = "<div class=\"form-group\"><div class=\"input-group\"><input type=\"text\" class=\"form-control\" placeholder=\"请输入地址来直接查找相关位置\"><div class=\"input-group-btn\"><button class=\"btn btn-default\"><i class=\"icon-search\"></i> 搜索</button></div></div></div><div id=\"map-container\" style=\"height:400px\"></div>";
+})(this.window.util.templates = this.window.util.templates || {});

@@ -1,0 +1,17 @@
+<div ng-controller="HeaderCtrl">
+	<div class="title">
+		<h1><span>{{module.params.title}}</span></h1>
+	</div>
+	<div class="head" style="background-repeat:no-repeat; background-position: center center;" ng-style="{'background-image' : module.params.bgImage ? 'url(' + module.params.bgImage + ')' : 'url(\'./resource/images/app/head-bg.png\')'}">
+		<a class="ptool" href="{{url('mc/profile')}}">设置</a>
+		<div class="logo-img"><img ng-src="{{logo_url}}" class="img-circle"></div>
+		<div class="banner-info">
+			<div class="name">设置昵称</div>
+			<div class="tel">1884512367</div>
+		</div>
+		<div class="head-nav">
+			<a class="head-nav-list" href="{{url('mc/bond/credits')}}&credittype=credit1"><span class="fa fa-rmb"></span>余额: <span>4000.00</span></a>
+			<a class="head-nav-list" href="{{url('mc/bond/credits')}}&credittype=credit2"><span class="fa fa-database"></span>积分: <span>900.00</span></a>
+		</div>
+	</div>
+</div>

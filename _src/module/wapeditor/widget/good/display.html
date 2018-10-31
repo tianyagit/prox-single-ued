@@ -1,0 +1,51 @@
+<div ng-controller="GoodCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div style="{{module.transform}}width:100%;height:100%;" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--点赞-->
+		<div class="app-good" style="width:100%;height:100%;{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="element app-good-up" ng-if="module.params.layoutstyle=='1'">
+				<div class="counter-container" ng-style="{'width': '100%', 'height': '100%', 'line-height' : module.params.baseStyle.lineHeight, 'overflow' : 'hidden'}">
+					<i class="fa fa-thumbs-o-up"></i>
+					<span class="counter-num">0</span>
+				</div>
+			</div>
+			<div class="element app-good-up" ng-if="module.params.layoutstyle=='2'">
+				<div class="counter-container counter-vertical" style="width:100%; height:100%; line-height:normal;overflow:hidden">
+					<i class="fa fa-thumbs-o-up"></i>
+					<span class="counter-num">0</span>
+				</div>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					var patt = new RegExp('c=home&a=page');
+					if (patt.exec(window.location.href)) {
+						$.post(window.location.href, {'do' : 'getnum'}, function(data) {
+							if (data.message.errno == 0) {
+								$('.counter-num').text(data.message.message.goodnum);
+							}
+						}, 'json');
+						$(".app-good .element").click(function() {
+							var id=GetQueryString("id");
+							if(id !=null && id.toString().length>=1 && localStorage.havegood != id){
+								$.post(window.location.href, {'do': 'addnum'}, function(data) {
+									if (data.message.errno == 0) {
+										var now = $('.counter-num').text();
+										now = parseInt(now)+1;
+										$('.counter-num').text(now);
+										localStorage.havegood = id;
+									}
+								}, 'json');
+							}
+						});
+						function GetQueryString(name){
+							var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+							var r = window.location.search.substr(1).match(reg);
+							if(r!=null)return  unescape(r[2]); return null;
+						}						
+					};
+				});
+			</script>
+		</div>
+		<!--end 点赞-->
+		<div we7-drag we7-resize we7-rotate></div>
+	</div>
+</div>

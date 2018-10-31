@@ -1,0 +1,18 @@
+<div ng-controller="TextNavCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div style="{{module.transform}}" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--app文本导航-->
+		<div class="app-textNav" style="{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="inner">
+				<div class="list-group mnav-box">
+					<div class="list-group-item" ng-repeat="item in module.params.items" ng-style="{'background-color': module.params.baseStyle.backgroundColor}">
+						<a class="clearfix" href="{{item.url}}">
+							<span class="app-nav-title">{{item.title}}<i class="pull-right fa fa-angle-right"></i></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end文本导航-->
+		<div we7-drag></div>
+	</div>
+</div>

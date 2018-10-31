@@ -1,0 +1,19 @@
+<div style="text-align:left;" class="modal fade {{modalClass}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">勾选粉丝标签（每个粉丝最多3个标签）</h4>
+			</div>
+			<div class="modal-body row">
+				<label class="checkbox-inline col-md-3" style="margin-left:0px;" ng-repeat="tag in tags" ng-click="checkMaxNumb($event)">
+					<input type="checkbox" value="{{tag.id}}" ng-model="selectTags[tag.id]" /> {{tag.name}}
+				</label>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" ng-click="tagSubmit($event)" data-dismiss="modal">确定</button>
+			</div>
+		</div>
+	</div>
+</div>

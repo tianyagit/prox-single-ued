@@ -1,0 +1,45 @@
+<div ng-controller="PureLinkCtrl">
+	<!-- 链接 -->
+	<div class="app-pureLink-edit">
+		<div class="arrow-left"></div>
+		<div class="inner">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<ul class="nav nav-pills nav-justified">
+						<li ng-class="{active : item.active}" ng-repeat="item in activeItem.params.items"><a ng-href="#{{item.id}}" role="tab" data-toggle="tab" ng-click="changeItem(item);"><button ng-class="{'btn' : 1,'btn-danger' : item.editcolor=='danger', 'btn-warning' : item.editcolor=='warning', 'btn-success' : item.editcolor=='success', 'btn-default' : item.editcolor=='default', 'btn-primary' : item.editcolor=='primary'}"><span ng-if="item.type=='img'" class="fa fa-picture-o"></span><span ng-if="item.id=='1'">点我购买</span><span ng-if="item.id=='2'">点开链接</span><span ng-if="item.id=='3'">马上购买</span><span ng-if="item.id=='4'">关注我们</span><span ng-if="item.id=='5'">自定义</span></button></a></li>
+					</ul>
+					<hr/>
+					<div class="tab-content">
+						<div class="tab-pane active" id="{{item.id}}" ng-repeat="item in activeItem.params.items" ng-show="item.active">
+							<div class="form-group" ng-show="item.type=='text'">
+								<label class="col-xs-3 control-label">按钮名称</label>
+								<div class="col-xs-9">
+									<input type="text" class="form-control" ng-model="item.title"/>
+								</div>
+							</div>
+							<div class="form-group" ng-show="item.type=='img'">
+								<label class="col-xs-3 control-label">按钮图片</label>
+								<div class="col-xs-9">
+									<div class="img-container">
+										<img ng-src="{{item.imgurl}}" alt=""/>
+										<span class="change-img" ng-click="addImage(item);">
+											<span ng-show="item.imgurl">更换</span><span ng-show="!item.imgurl">添加</span>图片
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-3 control-label">网站地址</label>
+								<div class="col-xs-6">
+									<input type="text" ng-model="item.url" class="form-control" placeholder="http://example.com"/>
+								</div>
+								<div class="col-xs-3 form-control-static"><a href="http://dwz.cn/" target="_blank">生成短链接</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 链接-end -->
+</div>

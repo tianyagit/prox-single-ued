@@ -1,0 +1,52 @@
+<div ng-controller="CardBasicCtrl">
+	<div class="title">
+		<h1><span>会员卡</span></h1>
+	</div>
+	<div class="card">
+		<div class="card-panel">
+			<div class="card-logo"><img src="" ng-if="module.params.logo" ng-src="{{module.params.logo}}"></div>
+			<img class="card-bg" src="" ng-if="module.params.background.image" ng-src="{{module.params.background.image}}"/>
+			<div class="card-grade" ng-if="module.params.card_level.type == '1'" ng-style="{'color' : module.params.color.rank}">默认会员组</div>
+			<div class="card-info">
+				<div class="text-center" ng-if="module.params.card_label.type == '1'">
+					<span class="card-rank" ng-style="{'color' : module.params.color.title}" ng-bind="module.params.card_label.title"></span>
+				</div>
+				<div class="card-no text-right" ng-if="!module.params.format_type" ng-style="{'color' : module.params.color.number}" ng-bind="module.params.format">会员卡号:<span>{$setting['format']}</span></div>
+			</div>
+		</div>
+	</div>
+	<div class="btn-manage clearfix">
+		<a href="javascript:;" class="recharge">
+			<img ng-src="{{recharge_src}}" alt="">
+			<span>充值</span>
+		</a>
+		<a href="javascript:;" class="payment">
+			<img ng-src="{{scanpay_src}}" alt=""/>
+			<span>付款</span>
+		</a>
+	</div>
+	<div class="list-group">
+		<div class="list-group-item">
+			<a href="#">我的余额 <span class="pull-right">0.00 <i class="fa fa-angle-right"></i></span></a>
+		</div>
+		<div class="list-group-item">
+			<a href="#">我的积分 <span class="pull-right">0.00 <i class="fa fa-angle-right"></i></span></a>
+		</div>
+		<div class="list-group-item">
+			<a href="#">我的卡券 <span class="pull-right">0张 <i class="fa fa-angle-right"></i></span></a>
+		</div>
+	</div>
+	<div class="list-group">
+		<div class="list-group-item">
+			<a href="#">消息 <span class="pull-right"> <i class="fa fa-angle-right"></i></span></a>
+		</div>
+	</div>
+	<div class="list-group">
+		<div class="list-group-item">
+			<a href="#">个人信息 <span class="pull-right"> <i class="fa fa-angle-right"></i></span></a>
+		</div>
+		<div class="list-group-item">
+			<a href="#">账单 <span class="pull-right"> <i class="fa fa-angle-right"></i></span></a>
+		</div>
+	</div>
+</div>

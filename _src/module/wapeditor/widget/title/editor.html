@@ -1,0 +1,105 @@
+<div ng-controller="TitleCtrl">
+	<!--标题-->
+	<div class="app-title-edit">
+		<div class="arrow-left"></div>
+		<div class="inner">
+			<div class="panel panel-default">
+				<div class="panel-body form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-3 control-label"><span class="red">*</span> 标题名</label>
+						<div class="col-xs-9">
+							<input type="text" class="form-control" name="" ng-model="activeItem.params.title" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-3">标题模板</label>
+						<div class="col-xs-9">
+							<input type="radio" name="title-style" ng-model="activeItem.params.template" value="1" class="tradition" id="template-type1">
+							<label class="radio-inline" for="template-type1">
+								传统样式
+							</label>
+							<input type="radio" name="title-style" ng-model="activeItem.params.template" value="2" class="wx" id="template-type2">
+							<label class="radio-inline" for="template-type2">
+								模仿微信图文页样式
+							</label>
+						</div>
+					</div>
+					<!--传统-->
+					<div class="form-group" ng-if="activeItem.params.template == 1">
+						<label class="col-xs-3 control-label">副标题</label>
+						<div class="col-xs-6">
+							<input type="text" class="form-control" ng-model="activeItem.params.tradition.subtitle" value="" />
+						</div>
+						<div class="col-xs-3 form-control-static">
+							<span class="date"><a href="javascript:;" we7-date-picker we7-date-value="activeItem.params.tradition.subtitle">日期</a></span>
+						</div>
+					</div>
+					<div class="form-group" ng-if="activeItem.params.template == 1">
+						<label class="control-label col-xs-3">显示</label>
+						<div class="col-xs-9">
+							<input type="radio" name="tra-style" value="left" ng-model="activeItem.params.tradition.align" id="show-type1">
+							<label class="radio-inline" for="show-type1">
+								居左显示
+							</label>
+							<input type="radio" name="tra-style" value="center" ng-model="activeItem.params.tradition.align" id="show-type2">
+							<label class="radio-inline" for="show-type2">
+								居中显示
+							</label>
+							<input type="radio" name="tra-style" value="right" ng-model="activeItem.params.tradition.align" id="show-type3">
+							<label class="radio-inline" for="show-type3">
+								居右显示
+							</label>
+						</div>
+					</div>
+					<div class="add-textNav card" ng-if="activeItem.params.template == 1 && activeItem.params.tradition.nav.enable == 0">
+						<a href="javascript:" ng-click="changeNavEnable(1)"><i class="fa fa-plus-circle green"></i>  添加一个文本导航</a>
+					</div>
+					<div class="card" style="padding:20px;" ng-if="activeItem.params.template == 1 && activeItem.params.tradition.nav.enable == 1">
+						<div class="btns">
+							<a href="javascript:" ng-click="changeNavEnable(0)"><i class="fa fa-times"></i></a>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-3 control-label"><span class="red">*</span> 名称</label>
+							<div class="col-xs-9">
+								<input type="text" class="form-control" name="" ng-model="activeItem.params.tradition.nav.title" value="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-3 control-label"><span class="red">*</span> 链接</label>
+							<div class="col-xs-9 form-control-static ">
+								<div we7-linker we7-my-url="activeItem.params.tradition.nav.url" we7-my-title="activeItem.params.tradition.nav.title"></div>
+							</div>
+						</div>
+					</div>
+
+					<!--仿微信样式-->
+					<div class="form-group" ng-if="activeItem.params.template == 2">
+						<label class="col-xs-3 control-label">日期</label>
+						<div class="col-xs-9">
+							<input type="text" class="form-control" name="" we7-date-picker we7-date-value="activeItem.params.news.date" value="">
+						</div>
+					</div>
+					<div class="form-group" ng-if="activeItem.params.template == 2">
+						<label class="col-xs-3 control-label">作者</label>
+						<div class="col-xs-9">
+							<input type="text" class="form-control" name="" ng-model="activeItem.params.news.author" value="">
+						</div>
+					</div>
+					<div class="form-group" ng-if="activeItem.params.template == 2">
+						<label class="col-xs-3 control-label">链接标题</label>
+						<div class="col-xs-9">
+							<input type="text" class="form-control" name="" ng-model="activeItem.params.news.title" value="">
+						</div>
+					</div>
+					<div class="form-group" ng-if="activeItem.params.template == 2">
+						<label class="control-label col-xs-3">链接地址</label>
+						<div class="col-xs-9">
+							<div we7-linker we7-my-url="activeItem.params.news.url" we7-my-title="activeItem.params.news.title"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end标题-->
+</div>

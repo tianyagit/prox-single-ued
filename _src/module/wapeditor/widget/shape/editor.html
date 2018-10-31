@@ -1,0 +1,83 @@
+<div ng-controller="ShapeCtrl">
+	<!--形状-->
+	<div class="app-shape-edit">
+		<div class="arrow-left"></div>
+		<div class="inner">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="shape-editor">
+						<a href="javascript:;" ng-click="addItem()" ng-if="!activeItem.params.svgValue"><i class="fa fa-plus-circle green"></i> &nbsp;填充形状</a>
+						<a href="javascript:;" ng-click="addItem()" ng-if="activeItem.params.svgValue"><i class="fa fa-plus-circle green"></i> &nbsp;修改形状</a>
+					</div>
+					<div id="shapeModal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
+						<div class="modal-dialog modal-lg" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="gridSystemModalLabel">形状库<span class="action">矢量素材，可更换颜色，放大不失真</span></h4>
+								</div>
+								<div class="dialog-content bg_console sound-flex clearfix">
+									<div class="cate-title">
+										<ul class="nav tabs-left">
+											<li>
+												<a href="javascript:;" data-toggle="tab">形状库</a>
+											</li>
+										</ul>
+									</div>
+									<div class="cate-list bg-rig">
+										<div id="bg_contain">
+											<div class="tab-pane tab-head">
+												<div class="img_list">
+													<div class="category_list clearfix">
+														<ul class="category_list_container clearfix">
+															<li class="category_item" ng-class="{'active' : sysCategory.active}" ng-repeat="sysCategory in sysCategoryList" ng-click="getSysCatAndList(sysCategory)" ng-bind="sysCategory.name"></li>
+														</ul>
+													</div>
+													<div class="cat_two_list">
+														<ul ng-repeat="sysCategory in sysCategoryList" ng-if="sysCategory.active">
+															<li class="cat_two_item" ng-class="{'active': sysTag.active}" ng-if="sysCategory.id == sysTag.parentid" ng-repeat="sysTag in sysImageTag" ng-click="getSysImgByTag(sysTag);" ng-bind="sysTag.name"></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="img_list">
+												<div class="img_list_container photo_list">
+													<ul class="img_box" style="height:348px;">
+														<li ng-if="img.parentid == activeItem.params.imgListActive" ng-repeat="img in currentImageList" style="width: 100px; height: 100px;cursor:pointer; position: relative; display: inline-block; background:50% 50% / contain no-repeat rgb(230, 235, 237);" ng-style="{backgroundImage: 'url(' + img.imgurl + ')'}" data-url="{{img.imgurl}}" ng-click="selectSvg($event,img)"></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer bg-pagination">
+										<div class="fl mr20" ng-show="page.numPages > 1">
+											<ul class="pagination" style="float: left">
+												<li><a href="" ng-click="selectPage(1)">首页</a></li>
+												<li><a href="" ng-click="selectPage(page.currentPage - 1)">‹</a></li>
+												<li ng-repeat="p in pages track by $index" ng-class="{active: p.active}">
+												<a href="javascript:;" ng-click="selectPage(p.number)" ng-bind="p.number"></a>
+												</li>
+												
+												<li><a href="" ng-click="selectPage(page.currentPage + 1)">›</a></li>
+												<li><a href="" ng-click="selectPage(page.numPages)">尾页</a></li>
+											</ul>
+											<div class="current_page">
+												<span class="fl">到</span>
+												<input type="text" ng-model="page.toPage" ng-keyup="$event.keyCode == 13 ? getImgByPage() : null">
+												<span class="fl">页</span> 
+												<a ng-click="getImgByPage()" class="go">确定</a>
+											</div>
+										</div>
+										<a class="modal-cancle" ng-click="cancel()">取消</a> 
+										<a class="btn btn-primary" ng-click="confirm();">确定</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end 形状-->
+</div>

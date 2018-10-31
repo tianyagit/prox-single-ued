@@ -1,0 +1,16 @@
+<div ng-controller="NoticeCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div style="{{module.transform}}" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--app公告-->
+		<div class="app-notice" style="{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="inner">
+				<div class="notice-box">
+					<div class="scrollNotice">
+						<span class="js-scroll-notice">公告: {{module.params.notice || '请填写内容,如果过长,将会在手机上滚动显示!'}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end 公告-->
+		<div we7-drag></div>
+	</div>
+</div>

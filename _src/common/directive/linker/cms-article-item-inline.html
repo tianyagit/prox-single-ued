@@ -1,0 +1,9 @@
+<%_.each(items, function(item) {%> 
+<tr>
+	<td><a href="#" data-cover-attachment-url="<%=item.attachment%>" title="<%=item.title%>"><%=item.title%></a></td>
+	<td><%=item.createtime%></td>
+	<td class="text-right">
+		<button class="btn btn-default js-btn-select" js-url="./index.php?c=site&a=site&do=detail&id=<%=item.id%>&i=<%=item.uniacid%>" js-title="<%=item.title%>">选取</button>
+	</td>
+</tr>
+<%});%>

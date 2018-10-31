@@ -1,0 +1,16 @@
+<%_.each(items, function(item) {%>
+	<tr>
+		<td colspan="2"><a href="#"><%=item.name%></a></td>
+		<td class="text-right">
+			<a class="btn btn-default js-btn-select" js-url="./index.php?c=site&a=site&cid=<%=item.id%>&i=<%=item.uniacid%>" js-title="<%=item.name%>">选取</a>
+		</td>
+	</tr>
+	<%_.each(item.children, function(child) {%>
+		<tr>
+			<td colspan="2" style="padding-left:50px;height:30px;line-height:30px;background-image:url(\'./resource/images/bg_repno.gif\'); background-repeat:no-repeat; background-position: -245px -540px;"><a href="#"><%=child.name%></a></td>
+			<td class="text-right">
+				<a class="btn btn-default js-btn-select" js-url="./index.php?c=site&a=site&cid=<%=child.id%>&i=<%=child.uniacid%>" js-title="<%=child.name%>">选取</a>
+			</td>
+		</tr>
+	<%});%>
+<%});%>

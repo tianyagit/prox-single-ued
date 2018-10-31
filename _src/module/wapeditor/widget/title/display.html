@@ -1,0 +1,22 @@
+<div ng-controller="TitleCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div style="{{module.transform}}" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--app标题-->
+		<div class="app-title" style="{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="inner" style="height:96px;">
+				<!--传统样式-->
+				<!--居左:text-left	居右:text-right	 居中:text-center-->
+				<div ng-if="module.params.template == 1" class="title-detail tradition" style="text-align: {{module.params.tradition.align}};">
+					<h2 class="title-con">{{ module.params.title || "点击编辑『标题』"}}<span ng-if="module.params.tradition.nav.enable == 1" class="title-link"> - <a href="{{module.params.tradition.nav.url}}" ng-bind="module.params.tradition.nav.title">文本导航</a></span></h2>
+					<p class="sub-title" ng-bind="module.params.tradition.subtitle">副标题</p>
+				</div>
+				<!--仿微信样式-->
+				<div ng-if="module.params.template == 2" class="title-detail text-left wx">
+					<h2 class="title-con">{{ module.params.title || "点击编辑『标题』"}}</h2>
+					<p class="sub-title"><span class="date" ng-bind="module.params.news.date">2015-03-12</span>&nbsp;&nbsp;<span class="author" ng-bind="module.params.news.author">zhangsan</span>&nbsp;&nbsp;<span><a href="{{module.params.news.url}}" ng-bind="module.params.news.title">微擎团队</a></span></p>
+				</div>
+			</div>
+		</div>
+		<!--end标题-->
+		<div we7-drag></div>
+	</div>
+</div>

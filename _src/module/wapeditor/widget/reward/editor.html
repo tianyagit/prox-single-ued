@@ -1,0 +1,27 @@
+<div ng-controller="RewardCtrl">
+	<!--打赏-->
+	<div class="app-reward-edit">
+		<div class="arrow-left"></div>
+		<div class="inner">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-xs-3 control-label"> 文字颜色</label>
+						<div class="col-xs-9" ng-my-colorpicker ng-my-color="activeItem.params.baseStyle.color" ng-my-default-color="activeItem.params.baseStyle.color"></div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label"> 字号</label>
+						<div class="col-xs-9">
+							<div class="btn-group" data-toggle="buttons">
+								<div ng-class="{'btn' : '1', 'active' : activeItem.params.fontactive=='big','btn-default' : activeItem.params.fonttype != 'big','btn-primary' : activeItem.params.fonttype=='big'}" ng-click="changeSize('big')">大</div>
+								<div ng-class="{'btn' : '1', 'active' : activeItem.params.fontactive=='middle','btn-default' : activeItem.params.fonttype != 'middle','btn-primary' : activeItem.params.fonttype=='middle'}" ng-click="changeSize('middle')">中</div>
+								<div ng-class="{'btn' : '1', 'active' : activeItem.params.fontactive=='small','btn-default' : activeItem.params.fonttype != 'small','btn-primary' : activeItem.params.fonttype=='small'}" ng-click="changeSize('small')">小</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!--end 打赏-->
+</div>

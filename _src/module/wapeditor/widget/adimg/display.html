@@ -1,0 +1,52 @@
+<div ng-controller="AdImgCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<link href="../app/resource/components/swiper/swiper.min.css" rel="stylesheet">
+<div style="{{module.transform}}" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--app图片广告-->
+		<div class="app-adImg" style="{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="inner">
+				<div class="appstyle js-default-content" ng-if="module.params.items.length == 0">
+					<img ng-show="module.params.listStyle == 1" src="./resource/images/app/adImg-lg.jpg" width="100%"><!--折叠轮播-->
+					<img ng-show="module.params.listStyle == 2" src="./resource/images/app/adImg-separate.jpg" width="100%"><!--分开显示-->
+				</div>
+				<!--折叠轮播-->
+				<div class="swiper-container swiper-container-horizontal" ng-if="module.params.items.length != 0 && module.params.listStyle == 1">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide" ng-class="{'swiper-slide-active' : $index == 0}" style="width: 100%;" ng-repeat="item in module.params.items">
+							<a href="{{item.url}}" style="display:block; width:100%; text-align:center;">
+								<img ng-src="{{item.imgurl}}" title="{{item.title}}" style="display:block; height:auto; max-width:100%;  margin:0 auto;">
+							</a>
+						</div>
+					</div>
+					<div class="swiper-pagination swiper-pagination-clickable">
+						<span class="swiper-pagination-bullet" ng-class="{'swiper-pagination-bullet-active': $index == 0}"  ng-repeat="item in module.params.items"></span>
+					</div>
+					<div class="swiper-button-next hidden"></div>
+					<div class="swiper-button-prev hidden"></div>
+				</div>
+				<!--分开显示-->
+				<div class="show-separate" ng-if="module.params.items.length != 0 && module.params.listStyle == 2">
+					<!--大图 lg-->
+					<div class="ad-list lg" ng-if="module.params.sizeType == 1">
+						<div class="ad-list-item" ng-repeat="item in module.params.items">
+							<a href="{{item.url}}">
+								<h3 ng-bind="item.title">广告标题</h3>
+								<img ng-src="{{item.imgurl}}">
+							</a>
+						</div>
+					</div>
+					<!--小图:sm-->
+					<div class="ad-list clearfix sm" ng-if="module.params.sizeType == 2">
+						<div class="ad-list-item col-xs-6 col-sm-6" ng-repeat="item in module.params.items">
+							<a href="{{item.url}}">
+								<h3 ng-bind="item.title">广告标题</h3>
+								<img ng-src="{{item.imgurl}}">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end图片广告-->
+<div we7-drag></div>
+	</div>
+</div>

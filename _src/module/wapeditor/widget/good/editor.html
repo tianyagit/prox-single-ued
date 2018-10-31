@@ -1,0 +1,28 @@
+<div ng-controller="GoodCtrl">
+	<!--点赞-->
+	<div class="app-good-edit">
+		<div class="arrow-left"></div>
+		<div class="inner">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-xs-3 control-label"> 颜色</label>
+						<div class="col-xs-9">
+							<div we7-colorpicker we7-my-color="activeItem.params.baseStyle.color" we7-my-default-color="activeItem.params.baseStyle.color"></div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-3 control-label"> 布局</label>
+						<div class="col-xs-9">
+							<div class="btn-group">
+								<div ng-class="{'btn' : '1', 'active' : activeItem.params.layoutactive=='lr','btn-default' : activeItem.params.layoutstyle != '1','btn-primary' : activeItem.params.layoutstyle=='1'}" ng-click="changeLayout('lr')">左右</div>
+								<div ng-class="{'btn' : '1', 'active' : activeItem.params.layoutactive=='ud','btn-default' : activeItem.params.layoutstyle != '2','btn-primary' : activeItem.params.layoutstyle=='2'}" ng-click="changeLayout('ud')">上下</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end 点赞-->
+</div>

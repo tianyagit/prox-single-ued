@@ -1,0 +1,22 @@
+<div ng-controller="ImageCtrl">
+	<!-- 单图片 -->
+	<div class="app-image-edit">
+		<div class="arrow-left"></div>
+		<div class="inner">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="add-image-item card clearfix" ng-show="activeItem.params.items.imgurl">
+						<div class="col-xs-3 img">
+							<h3 ng-click="changeItem(activeItem.params.items)">重新上传</h3>
+							<img ng-src="{{ activeItem.params.items.imgurl }}" width="100%">
+						</div>
+					</div>
+					<div class="add-image-editor card" ng-click="addItem()" ng-hide="activeItem.params.items.imgurl">
+						<a href="#"><i class="fa fa-plus-circle green"></i>添加一个图片</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 单图片-end -->
+</div>

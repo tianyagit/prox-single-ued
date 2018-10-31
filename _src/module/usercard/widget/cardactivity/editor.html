@@ -1,0 +1,96 @@
+<div ng-controller="CardActivityCtrl">
+	<div class="app-header-setting">
+		<div class="arrow-left"></div>
+		<div class="app-header-setting-inner">
+			<div class="panel panel-default">
+				<ul class="nav nav-tabs" style="margin:10px 15px 0 15px">
+					<li ng-class="{'active' : activeItem.id == 'cardBasic'}"><a href="javascript:;" ng-click="editItem('cardBasic');">基本设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardActivity'}"><a href="javascript:;" ng-click="editItem('cardActivity');">消费优惠设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardRecharge'}"><a href="javascript:;" ng-click="editItem('cardRecharge');">充值优惠设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardNums'}"><a href="javascript:;" ng-click="editItem('cardNums');">计次设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardTimes'}"><a href="javascript:;" ng-click="editItem('cardTimes');">计时设置</a></li>
+				</ul>
+				<div class="panel-body form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">付款返积分比率</label>
+						<div class="col-sm-9 col-xs-12">
+							<div class="input-group">
+								<span class="input-group-addon">每消费 1 元赠送</span>
+								<input type="text" ng-model="activeItem.params.grant_rate" class="form-control">
+								<span class="input-group-addon">积分</span>
+							</div>
+							<div class="help-block">设置消费返积分的比率.如果开启了充值优惠设置,请到充值优惠设置中->设置消费是否返还积分的开关.</div>
+							<div class="help-block"><strong class="text-danger">例:兑换比率:1元返10积分,那用户每消费1元,将得到10积分.</strong></div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠设置</label>
+						<div class="col-sm-9 col-xs-12">
+							<input type="radio" value="0" ng-model="activeItem.params.discount_type" id="discount_type1">
+							<label class="radio-inline" for="discount_type1"> 不开启</label>
+							<input type="radio" value="1" ng-model="activeItem.params.discount_type" id="discount_type2">
+							<label class="radio-inline" for="discount_type2"> 使用满减功能</label>
+							<input type="radio" value="2" ng-model="activeItem.params.discount_type" id="discount_type3">
+							<label class="radio-inline" for="discount_type3"> 使用折扣功能</label>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.discount_type == 1" ng-repeat="discount in activeItem.params.discounts">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div class="input-group">
+								<span class="input-group-addon">{{discount.title}}</span>
+								<span class="input-group-addon">满</span>
+								<input type="hidden" ng-model="discount.groupid"/>
+								<input type="text" class="form-control" ng-model="discount.condition_1">
+								<span class="input-group-addon">元</span>
+								<span class="input-group-addon">减</span>
+								<input type="text" class="form-control"  ng-model="discount.discount_1">
+								<span class="input-group-addon">元</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.discount_type == 2" ng-repeat="discount in activeItem.params.discounts">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div class="input-group">
+								<span class="input-group-addon">{{discount.title}}</span>
+								<span class="input-group-addon">满</span>
+								<input type="hidden" ng-model="discount.groupid"/>
+								<input type="text" class="form-control" ng-model="discount.condition_2">
+								<span class="input-group-addon">元</span>
+								<span class="input-group-addon">打</span>
+								<input type="text" class="form-control"  ng-model="discount.discount_2">
+								<span class="input-group-addon">折</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.discount_type != 0">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">样式设置</label>
+						<div class="col-sm-9 col-xs-12">
+							<label class="radio-inline">
+								<input type="radio" value="1" ng-model="activeItem.params.discount_style"> 系统默认
+							</label>
+							<label class="radio-inline">
+								<input type="radio" value="2" ng-model="activeItem.params.discount_style"> 自定义
+							</label>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.discount_type != 0 && activeItem.params.discount_style == 2">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div class="input-group">
+								<div we7-colorpicker we7-my-color="activeItem.params.bgColor" we7-my-default-color="'#ffffff'"></div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.discount_type != 0 && activeItem.params.discount_style == 2">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div we7-editor we7-my-value="activeItem.params.content"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

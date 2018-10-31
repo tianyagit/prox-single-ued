@@ -1,0 +1,10 @@
+<div ng-controller="ShapeCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div style="{{module.transform}}width:100%;height:100%;" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--形状-->
+		<div class="app-shape" style="width:100%;height:100%;{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div style="width:100%;height:100%;" class="element" we7-svger we7-svg="module.params.svgValue"></div>
+		</div>
+		<!--end 形状-->
+		<div we7-drag we7-resize we7-rotate></div>
+	</div>
+</div>

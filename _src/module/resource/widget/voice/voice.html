@@ -1,0 +1,44 @@
+<div class="modal-body material-content clearfix">
+	<div class="material-nav">
+		<a href="javascript:;" ng-class="{true:'active',false:''}[index==0]" 
+			ng-show="showWx()"
+			ng-click="setIndex(0)">平台</a>
+		<a href="javascript:;" ng-class="{true:'active',false:''}[index == 1]" 
+		 ng-show="showLocal()"
+		 ng-click="setIndex(1)">本地服务器</a>
+	</div>
+	<div class="material-head">
+		<form action="" method="get" class="form-horizontal clearfix form-inline" role="form">
+			<div class="pull-right btn-uploader" style="z-index: 10;">
+				<!-- <label for="file" class="btn btn-primary">上传语音</label>
+				<input type="file" id='file' name='file' accept="audio/*" style="display: none;" /> -->
+				<we7-uploader-btn upload-url='uploadurl' on-uploaded='uploaded()' 
+							on-upload-error='uploaderror(mes)'
+							name='uploadname' accept='accept'></we7-uploader-btn>
+			</div>
+		</form>
+	</div>
+	<div id="voice" class="material-body voice-content">
+		<div class="row">
+			<div class="col-sm-3" ng-repeat="(key, value) in $ctrl.voices" ng-click="$ctrl.itemClick(value)">
+				<div class="item" ng-class="{true:'active',false:''}[value.selected]">
+					<img src="/web/resource/images/icon-voice.png" alt="" class="icon" />
+					<div class="time">创建于：{{ $ctrl.timeToDate(value.createtime) | date:'yyyy-MM-dd HH:mm' }}</div>
+					<div class="name">{{$ctrl.getTitle(value)}}</div>
+					<div class="mask">
+						<span class="wi wi-right"></span>
+					</div>
+					<div class="del" ng-click="delItem(value,$event)">
+						<span class="wi wi-delete2"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--注意全部有分页-->
+	<div class="material-pager text-right" ng-bind-html="$ctrl.pager"></div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-primary" ng-show="$ctrl.multiple">确定</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+</div>

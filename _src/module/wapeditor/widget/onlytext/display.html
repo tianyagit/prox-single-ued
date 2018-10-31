@@ -1,0 +1,10 @@
+<div ng-controller="OnlyTextCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div style="{{module.transform}}width:100%;height:100%;" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!-- 文字start -->
+		<div class="app-onlyText" style="width:100%;height:100%;{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="element" ng-bind="module.params.title" style="overflow:hidden"></div>
+		</div>
+		<!-- 文字end -->
+		<div we7-drag we7-resize we7-rotate></div>
+	</div>
+</div>

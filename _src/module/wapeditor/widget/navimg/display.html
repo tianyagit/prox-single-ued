@@ -1,0 +1,19 @@
+<div ng-controller="NavImgCtrl" style="{{module.positionStyle}}min-height:90px;transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div style="{{module.transform}}width:100%;height:100%;" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--app图片广告-->
+		<div class="app-navImg" style="width:100%;height:100%;{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="inner" style="height:100%;">
+				<ul class="clearfix" style="height:100%;">
+					<li ng-repeat="item in module.params.items" style="height:100%;">
+						<a href="{{item.url}}" style="height:100%;width:100%;">
+							<span class="nav-img" style="height:80%;width:100%;" ng-if="item.imgurl"><img ng-src="{{item.imgurl}}" style="height:100%;width:95%;"></span>
+							<span class="title" title="{{item.title}}" style="height:20%;width:100%;line-height:100%;">{{item.title}}</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--end图片广告-->
+		<div we7-drag we7-resize we7-rotate></div>
+	</div>
+</div>

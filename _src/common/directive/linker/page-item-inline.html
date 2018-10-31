@@ -1,0 +1,9 @@
+<%_.each(items, function(item) {%> 
+<tr>
+	<td><a href="#" title="<%=item.title%>"><%=item.title%></a></td>
+	<td><%=item.createtime%></td>
+	<td class="text-right">
+		<button class="btn btn-default js-btn-select" js-url="./index.php?i=<%=item.uniacid%>&c=home&a=page&id=<%=item.id%>" js-title="<%=item.title%>">选取</button>
+	</td>
+</tr>
+<%});%>

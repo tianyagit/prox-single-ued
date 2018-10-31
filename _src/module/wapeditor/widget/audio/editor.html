@@ -1,0 +1,87 @@
+<div ng-controller="AudioCtrl">
+	<!--语音-->
+	<div class="app-audio-edit">
+		<div class="arrow-left"></div>
+		<div class="inner">
+			<div class="panel panel-default">
+				<div class="panel-body form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-2 control-label">音频</label>
+						<div class="col-xs-10">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default audio-player-play" style="display:none;"><i class="fa fa-play"></i></button>
+								<button ng-click="addAudioItem()" type="button" class="btn btn-default">选择媒体文件</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label">样式</label>
+						<div class="col-xs-10 ">
+							<div class="">
+								<input id="wx-music-type" type="radio" name="wx-music" value="1" ng-model="activeItem.params.style" ng-click="changeInnerHeight()"/>
+								<label class="radio-inline" for="wx-music-type">
+									模仿微信对话样式
+								</label>
+								<div class="form-group" ng-show="activeItem.params.style == '1'">
+									<label class="control-label col-xs-3">头像:</label>
+									<div class="col-xs-3" style="padding-top:10px;"><img ng-init="activeItem.params.headimg = activeItem.params.headimg ? activeItem.params.headimg : './resource/images/app/shop.png!80x80.jpg'" ng-src="{{activeItem.params.headimg}}" alt="语音头像" width="62" height="62"></div>
+									<div class="help-block col-xs-6" style="padding-left:0;padding-top:10px;">
+										<a href="#" ng-click="addImgItem()">上传头像</a><br>
+										建议尺寸80*80像素<br>
+										如果不设置,默认将使用店铺logo
+									</div>
+								</div>
+								<div class="form-group" ng-show="activeItem.params.style == '1'">
+									<label class="control-label col-xs-3">气泡:</label>
+									<div class="col-xs-9">
+										<input id="bubble-left" type="radio" name="bubble" value="left" ng-model="activeItem.params.align" />
+										<label class="radio-inline" for="bubble-left">
+											居左
+										</label>
+										<input id="bubble-right" type="radio" name="bubble" value="right" ng-model="activeItem.params.align" />
+										<label class="radio-inline" for="bubble-right">
+											居右
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<input id="simple-music-type" type="radio" name="wx-music" value="2" ng-model="activeItem.params.style" ng-click="changeInnerHeight()"/>
+								<label class="radio-inline" for="simple-music-type">
+									简易音乐播放器
+								</label>
+								<div>
+									<div class="form-group" ng-show="activeItem.params.style == '2'">
+										<label class="control-label col-xs-3">标题:</label>
+										<div class="col-xs-9"><input class="form-control" type="text" ng-model="activeItem.params.title" /></div>
+									</div>
+									<div class="form-group" ng-show="activeItem.params.style == '2'">
+										<label class="control-label col-xs-3">循环:</label>
+										<div class="col-xs-9"><label class="checkbox-inline"><input type="checkbox" ng-model="activeItem.params.isloop" />开启循环播放</label></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label">播放</label>
+						<div class="col-xs-10">
+							<div>
+							<input id="play-type1" type="radio" name="play" ng-model="activeItem.params.reload" value="true" />
+							<label class="radio-inline" for="play-type1">
+								暂停后再回复播放时,从头开始
+							</label>
+								</div>
+							<div>
+							<input id="play-type2" type="radio" name="play" ng-model="activeItem.params.reload" value="false" />
+							<label class="radio-inline" for="play-type2">
+								暂停后再回复播放时,从暂停位置开始
+							</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

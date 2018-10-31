@@ -1,0 +1,82 @@
+<div ng-controller="CardTimesCtrl">
+	<div class="app-header-setting">
+		<div class="arrow-left"></div>
+		<div class="app-header-setting-inner">
+			<div class="panel panel-default">
+				<ul class="nav nav-tabs" style="margin:10px 15px 0 15px">
+					<li ng-class="{'active' : activeItem.id == 'cardBasic'}"><a href="javascript:;" ng-click="editItem('cardBasic');">基本设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardActivity'}"><a href="javascript:;" ng-click="editItem('cardActivity');">消费优惠设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardRecharge'}"><a href="javascript:;" ng-click="editItem('cardRecharge');">充值优惠设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardNums'}"><a href="javascript:;" ng-click="editItem('cardNums');">计次设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardTimes'}"><a href="javascript:;" ng-click="editItem('cardTimes');">计时设置</a></li>
+				</ul>
+				<div class="panel-body form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">计时设置</label>
+						<div class="col-sm-9 col-xs-12">
+							<input type="radio" value="1" ng-model="activeItem.params.times_status" id="times_status1">
+							<label class="radio-inline" for="times_status1"> 开启</label>
+							<input type="radio" value="0" ng-model="activeItem.params.times_status" id="times_status2">
+							<label class="radio-inline" for="times_status2"> 关闭</label>
+							<span class="help-block">如你的业务有需要时长限制，可开启进行设置。</span>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.times_status == 1">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">计时设置</label>
+						<div class="col-sm-9 col-xs-12">
+							<input type="text" class="form-control" ng-model="activeItem.params.times_text"/>
+							<span class="help-block">例如：设置为”到期时间“,系统将根据用户的领卡时间,加上用户的可用时长，计算到期时间，前台将显示为：”到期时间：x年x月x日“,请根据自己的业务需求设置。</span>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.times_status == 1">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">充值返时长</label>
+						<div class="col-sm-9 col-xs-12">
+							<div ng-repeat="time in activeItem.params.times" style="margin-left:-15px">
+								<div class="col-sm-8" style="margin-bottom:10px">
+									<div class="input-group">
+										<span class="input-group-addon">充</span>
+										<input type="text" class="form-control" ng-model="time.recharge">
+										<span class="input-group-addon">元</span>
+										<input type="text" class="form-control" ng-model="time.time">
+										<span class="input-group-addon">天</span>
+									</div>
+								</div>
+								<div class="col-sm-1" style="margin-top:5px">
+									<a href="javascript:;" ng-click="removeTimes(time);"><i class="fa fa-times-circle"></i></a>
+								</div>
+							</div>
+							<div class="help-block col-sm-9" style="margin-left:-15px">
+								<a href="javascript:;" ng-click="addTimes();"><i class="fa fa-plus-circle" title="添加充值设置"></i> 添加充值设置</a>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.times_status != 0">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">样式设置</label>
+						<div class="col-sm-9 col-xs-12">
+							<label class="radio-inline">
+								<input type="radio" value="1" ng-model="activeItem.params.times_style"> 系统默认
+							</label>
+							<label class="radio-inline">
+								<input type="radio" value="2" ng-model="activeItem.params.times_style"> 自定义
+							</label>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.times_status != 0 && activeItem.params.times_style == 2">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div class="input-group">
+								<div we7-colorpicker we7-my-color="activeItem.params.bgColor" we7-my-default-color="'#ffffff'"></div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.times_status != 0 && activeItem.params.times_style == 2">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div we7-editor we7-my-value="activeItem.params.content"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

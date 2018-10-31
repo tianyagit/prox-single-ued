@@ -1,0 +1,49 @@
+<div ng-controller="CardTimesCtrl">
+	<div class="nav-container" ng-if="module.params.times_status == 1 && module.params.times_style == 1">
+		<ul>
+			<li class="collapse-link">
+				<a class="nav-container-list" href="javascript:;">
+					<span class="nav-title"><i class="fa fa-eye"></i>{{module.params.times_text}}充值</span>
+					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
+				</a>
+				<div class="collapse-con padding-b-0">
+					<a href="./index.php?i={$_W['uniacid']}&j={$_W['acid']}&c=entry&m=recharge&do=pay&type=card_times&fee={{time.recharge}}" class="btn btn-warning btn-recharge" ng-repeat="time in module.params.times">充{{time.recharge}}返{{time.time}}天</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="app-richText" ng-if="module.params.times_status == 1 && module.params.times_style == 2" ng-style="{'background-color' : module.params.bgColor}">
+		<div class="inner" ng-bind-html="module.params.content" ng-if="module.params.content"></div>
+		<div class="inner js-default-content" ng-if="!module.params.content">
+			<p>点此编辑『富文本』内容 ——&gt;</p>
+			<p>
+				你可以对文字进行
+				<strong>加粗</strong>、<em>斜体</em>、<span style="text-decoration: underline;">下划线</span>、
+				<span style="text-decoration: line-through;">删除线</span>、文字<span style="color: rgb(0, 176, 240);">颜色</span>、
+				<span style="background-color: rgb(255, 192, 0); color: rgb(255, 255, 255);">背景色</span>、
+				以及字号<span style="font-size: 20px;">大</span><span style="font-size: 14px;">小</span>等简单排版操作。
+			</p>
+			<p>还可以在这里加入表格了</p>
+			<table class="table-bordered">
+				<tbody>
+				<tr>
+					<td>中奖客户</td>
+					<td>发放奖品</td>
+					<td>备注</td>
+				</tr>
+				<tr>
+					<td>猪猪</td>
+					<td>内测码</td>
+					<td><em><span class="red">已经发放</span></em></td>
+				</tr>
+				<tr>
+					<td>大麦</td>
+					<td>积分</td>
+					<td><a href="#" target="_blank">领取地址</a></td>
+				</tr>
+				</tbody>
+			</table>
+			<p style="text-align: left;"><span style="text-align: left;">也可在这里插入图片、并对图片加上超级链接，方便用户点击。</span></p>
+		</div>
+	</div>
+</div>

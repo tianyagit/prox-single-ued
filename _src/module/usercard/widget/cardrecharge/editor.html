@@ -1,0 +1,88 @@
+<div ng-controller="CardRechargeCtrl">
+	<div class="app-header-setting">
+		<div class="arrow-left"></div>
+		<div class="app-header-setting-inner">
+			<div class="panel panel-default">
+				<ul class="nav nav-tabs" style="margin:10px 15px 0 15px">
+					<li ng-class="{'active' : activeItem.id == 'cardBasic'}"><a href="javascript:;" ng-click="editItem('cardBasic');">基本设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardActivity'}"><a href="javascript:;" ng-click="editItem('cardActivity');">消费优惠设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardRecharge'}"><a href="javascript:;" ng-click="editItem('cardRecharge');">充值优惠设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardNums'}"><a href="javascript:;" ng-click="editItem('cardNums');">计次设置</a></li>
+					<li ng-class="{'active' : activeItem.id == 'cardTimes'}"><a href="javascript:;" ng-click="editItem('cardTimes');">计时设置</a></li>
+				</ul>
+				<div class="panel-body form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠设置</label>
+						<div class="col-sm-9 col-xs-12">
+							<input type="radio" value="1" ng-model="activeItem.params.recharge_type" id="recharge_type1">
+							<label class="radio-inline" for="recharge_type1"> 开启</label>
+							<input type="radio" value="0" ng-model="activeItem.params.recharge_type" id="recharge_type2">
+							<label class="radio-inline" for="recharge_type2"> 不开启</label>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.recharge_type == 1" ng-repeat="recharge in activeItem.params.recharges">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div class="input-group">
+								<span class="input-group-addon">充</span>
+								<input type="text" class="form-control" ng-model="recharge.condition">
+								<span class="input-group-addon">元</span>
+								<span class="input-group-addon" ng-if="recharge.backtype == '0'">送</span>
+								<span class="input-group-addon" ng-if="recharge.backtype == '1'">送</span>
+								<input type="text" class="form-control"  ng-model="recharge.back">
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:88px;">
+										<span ng-switch on="recharge.backtype">
+											<span ng-switch-when="0">元</span>
+											<span ng-switch-when="1">积分</span>
+										</span>
+										<i class="fa fa-angle-down"></i>
+									</button>
+									<ul class="dropdown-menu dropdown-menu-right select-back">
+										<li><a href="#" ng-click="recharge.backtype='0';recharge.backunit='元'">元</a></li>
+										<li><a href="#" ng-click="recharge.backtype='1';recharge.backunit='积分'">积分</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-1" style="margin-top:5px">
+							<a href="javascript:;" ng-click="removeRecharges(recharge);"><i class="fa fa-times-circle"></i></a>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.recharge_type != 0">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="help-block col-sm-9 col-xs-12" style="margin-left:-15px">
+							<a href="javascript:;" ng-click="addRecharges();"><i class="fa fa-plus-circle" title="添加充值设置"></i> 添加充值设置</a>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.recharge_type == 1">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">消费返积分</label>
+						<div class="col-sm-9 col-xs-12">
+							<label class="radio-inline">
+								<input type="radio" value="1" ng-model="activeItem.params.grant_rate_switch"> 是
+							</label>
+							<label class="radio-inline">
+								<input type="radio" value="0" ng-model="activeItem.params.grant_rate_switch"> 否
+							</label>
+							<div class="help-block"><strong class="text-danger">开启充值优惠设置后,用户是否继续享受消费返积分的优惠</strong></div>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.discount_type != 0 && activeItem.params.discount_style == 2">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div class="input-group">
+								<div we7-colorpicker we7-my-color="activeItem.params.bgColor" we7-my-default-color="'#ffffff'"></div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" ng-show="activeItem.params.discount_type != 0 && activeItem.params.discount_style == 2">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<div we7-editor we7-my-value="activeItem.params.content"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

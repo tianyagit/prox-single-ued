@@ -1,0 +1,50 @@
+
+	
+<div class="modal-body material-content clearfix">
+
+		<div id="music" class="material-body we7-form">
+			<form action="" method="post" class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">音乐标题</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="添加音乐消息的标题" ng-model = '$ctrl.music.title'/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">选择音乐</label>
+					<div class="col-sm-10">
+						<div class="input-group">
+							<input type="text" class="form-control" readonly="readonly" ng-model='$ctrl.music.url'/>
+							<span class="input-group-btn" >
+							<button class="btn btn-default" type="button" ng-click="$ctrl.selectVoice()">选择媒体文件</button>
+							</span>
+						</div>
+						<div class="help-block">选择上传的音频文件或直接输入URL地址，常用格式：mp3</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">高品质链接</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" ng-model='$ctrl.music.HQUrl'/>
+						<div class="help-block">
+							没有高品质音乐链接，请留空。高质量音乐链接，WIFI环境优先使用该链接播放音乐
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">描述</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" ng-model='$ctrl.music.description'/>
+						<div class="help-block">描述内容将出现在音乐名称下方，建议控制在20个汉字以内最佳</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-primary" ng-click="$ctrl.ok()">确定</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+</div>

@@ -1,0 +1,42 @@
+<div ng-controller="CountDownCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div style="{{module.transform}}width:100%;height:100%;" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--倒计时-->
+		<div class="app-countDown" style="width:100%;height:100%;overflow:hidden;{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="timer" data="{{module.params.deadtime}}">
+				<span class="day" ng-bind="module.params.leftTimeText.day"></span>
+				<small style="vertical-align:middle;margin:3px">天</small>
+				<span class="hours" ng-bind="module.params.leftTimeText.hour"></span>
+				<small style="vertical-align:middle;margin:3px">时</small>
+				<span class="minutes" ng-bind="module.params.leftTimeText.min"></span>
+				<small style="vertical-align:middle;margin:3px">分</small>
+				<span class="seconds" ng-bind="module.params.leftTimeText.sec"></span>
+				<small style="vertical-align:middle;margin:3px">秒</small>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					setInterval(function(){
+						var timer = $('.timer');
+						for (var i = 0; i < timer.length; i++) {
+							var dead = $(timer.get(i)).attr('data');
+							var deadtime = dead.replace(/-/g,'/');
+							deadtime = new Date(deadtime).getTime();
+							var nowtime = Date.parse(Date());
+							var diff = deadtime - nowtime > 0 ? deadtime - nowtime : 0;
+							var res = {};
+							res.day = parseInt(diff / (24 * 60 * 60 * 1000));
+							res.hour = parseInt(diff / (60 * 60 * 1000) % 24);
+							res.min = parseInt(diff / (60 * 1000) % 60);
+							res.sec = parseInt(diff / 1000 % 60);
+							$('.timer[data="'+dead+'"] .day').text(res.day);
+							$('.timer[data="'+dead+'"] .hours').text(res.hour);
+							$('.timer[data="'+dead+'"] .minutes').text(res.min);
+							$('.timer[data="'+dead+'"] .seconds').text(res.sec);
+						};
+					}, 1000);
+				});
+			</script>
+		</div>
+		<!--end 倒计时-->
+		<div we7-drag we7-resize we7-rotate></div>
+	</div>
+</div>

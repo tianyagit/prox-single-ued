@@ -1,0 +1,50 @@
+<div ng-controller="LinkCtrl" style="{{module.positionStyle}}transform:translate3d(0px, 0px, 0px);" we7-context-menu>
+	<div class="container-link" style="{{module.transform}}" ng-class="{'alock' : module.params.baseStyle.lock}">
+		<!--app关联链接-->
+		<div class="app-link js-default-content" ng-if="module.params.items.length == 0" style="{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.animationStyle}}">
+			<div class="inner">
+				<div class="list-group">
+					<div class="list-group-item">
+						<a class="clearfix" href="javascript:;">
+							<span class="app-nav-title">点此编辑第1条『关联链接』<i class="pull-right fa fa-angle-right"></i></span>
+						</a>
+					</div>
+					<div class="list-group-item">
+						<a class="clearfix" href="javascript:;">
+							<span class="app-nav-title">点此编辑第2条『关联链接』<i class="pull-right fa fa-angle-right"></i></span>
+						</a>
+					</div>
+					<div class="list-group-item">
+						<a class="clearfix" href="javascript:;">
+							<span class="app-nav-title">点此编辑第n条『关联链接』<i class="pull-right fa fa-angle-right"></i></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-if="module.params.items.length != 0">
+			<div class="app-link" style="{{module.baseStyle}}{{module.borderStyle}}{{module.shadowStyle}}{{module.params.animate}}">
+				<div class="inner">
+					<div class="list-group">
+						<div ng-repeat="item in module.params.items">
+							<div ng-if="item.type == '1' && (item.selectCate.pid > 0 || item.selectCate.cid > 0)">
+								<div class="list-group-item" ng-repeat="i in pageSize | limitTo:item.pageSize">
+									<a class="clearfix" href="javascript:;">
+										<span class="app-nav-title"> 第{{$index+1}}条 {{item.selectCate.name}} 的『关联链接』<i class="pull-right fa fa-angle-right"></i></span>
+									</a>
+								</div>
+							</div>
+							<div class="list-group-item"  ng-if="item.type == '2'">
+								<a class="clearfix" href="{{item.url}}">
+									<span class="app-nav-title"> {{item.title}} <i class="pull-right fa fa-angle-right"></i></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--app关联链接-->
+		<div we7-drag></div>
+	</div>
+</div>
